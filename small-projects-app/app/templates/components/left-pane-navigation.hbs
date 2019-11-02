@@ -1,0 +1,22 @@
+<div class="left-pane-wrapper">
+    <div class="active-pane-link" id="activePaneLink"></div>
+    <div class="left-pane-section">
+        {{#each model as |section parentIndex|}}
+            <div class="left-pane-section-header">
+                {{section.title}}
+            </div>
+            <ul>
+                {{#each section.subPages as |pages childIndex|}}
+                    <li>
+                        <a class="pane-link {{if pages.isActive 'active'}}" id={{concat 'unqiueId' parentIndex childIndex}} onclick={{action 'changeRoute' (concat 'unqiueId' parentIndex childIndex)}}>
+                            <div>
+                                <img src={{pages.iconUrl}} />
+                                {{pages.title}}
+                            </div>
+                        </a>
+                    </li>
+                {{/each}}
+            </ul>
+        {{/each}}
+    </div>
+</div>
